@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #provincia{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <label for="color">Color:</label>
+    <input type="color" name="color" id="color" disabled>
+
+    <label for="lista">Elija:</label>
+    <select name="lista" id="lista">
+        <option value="elija">Elija producto</option>
+        <option value="movil">Móvil</option>
+        <option value="tablet">Tablet</option>
+    </select>
+
+    <form action="">
+        <label for="pais">País:</label>
+        <select name="pais" id="pais">
+            <option value="elija">Elija destino</option>
+            <option value="españa">España</option>
+            <option value="fuera">Fuera de España</option>
+        </select>
+
+        <label for="provincia">Provincia:</label>
+        <select name="provincia" id="provincia">
+            <option value="to">Toledo</option>
+            <option value="cr">Ciudad Real</option>
+            <option value="al">Albacete</option>
+        </select>
+    </form>
+
+    <script>
+        document.getElementById("lista").addEventListener("change", funcion);
+
+        function funcion(){
+            let valor=document.getElementById("lista").value;
+
+            if(valor=="movil"){
+                document.getElementById("color").removeAttribute("disabled");
+            }
+            
+            if(valor!="movil"){
+                document.getElementById("color").setAttribute("disabled","");
+            }
+        }
+
+        document.getElementById("pais").addEventListener("change",paisProvincia);
+        function paisProvincia(){
+            const pais=document.getElementById("pais").value;
+            if(pais=="españa"){
+                document.getElementById("provincia").style.visibility="visible";
+            }else{
+                document.getElementById("provincia").style.visibility="hidden";
+            }
+        }
+    </script>
+</body>
+</html>
