@@ -21,7 +21,7 @@
         <option value="tablet">Tablet</option>
     </select>
 
-    <form action="">
+    <form action="" id="formu" onsubmit="validaFormulario()">
         <label for="pais">País:</label>
         <select name="pais" id="pais">
             <option value="elija">Elija destino</option>
@@ -31,10 +31,13 @@
 
         <label for="provincia">Provincia:</label>
         <select name="provincia" id="provincia">
+            <option value="elija-provincia">Elija una provincia</option>
             <option value="to">Toledo</option>
             <option value="cr">Ciudad Real</option>
             <option value="al">Albacete</option>
         </select>
+
+        <input type="submit">
     </form>
 
     <script>
@@ -60,6 +63,15 @@
             }else{
                 document.getElementById("provincia").style.visibility="hidden";
             }
+        }
+
+        document.getElementById("provincia").addEventListener("change",validaFormulario);
+        function validaFormulario(){
+            if(document.getElementById("provincia").value=="elija-provincia"){
+                alert("Debe elegir una opción");
+                return false;
+            }
+            return true;
         }
     </script>
 </body>
